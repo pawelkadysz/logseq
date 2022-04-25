@@ -17,32 +17,54 @@
 }
 
 .white-theme, html[data-theme=light] {
+--ls-primary-background-color: #fff;
+--cl-white: #fff;
 --ls-secondary-background-color: #f5f6f8;
+--cl-blackhaze: #f5f6f8;
 --ls-tertiary-background-color: #dee0e6;
 --ls-quaternary-background-color: #dee0e6;
+--cl-zircon: #dee0e6;
 --ls-dark-background-color: #2c3238;
+--cl-gunmetal: #2c3238;
 --ls-active-primary-color: #0169cd;
 --ls-active-secondary-color: #0169cd;
---ls-block-properties-background-color: #f7f7f7;
---ls-page-properties-background-color: #f7f7f7;
 --ls-block-ref-link-text-color: #0169cd;
---ls-search-background-color: var(--ls-primary-background-color);
---ls-border-color: #e5e9eb;
---ls-secondary-border-color: #e2e2e2;
---ls-guideline-color: rgba(46, 27, 5, 0.08);
---ls-menu-hover-color: var(--ls-a-chosen-bg);
---ls-primary-text-color: #121417;
---ls-secondary-text-color: #94979b;
---ls-title-text-color: var(--ls-primary-text-color);
---ls-link-text-color: #0169cd;
---ls-link-text-hover-color: #121417;
 --ls-link-ref-text-color: #0169cd;
+--ls-link-text-color: #0169cd;
+--cl-navyblue: #0169cd;
+
+--ls-block-properties-background-color: var(--ls-secondary-background-color);
+
+--ls-page-properties-background-color: #f7f7f7;
+--cl-snow: #f7f7f7;
+
+--ls-search-background-color: var(--ls-primary-background-color);
+
+--ls-border-color: #e5e9eb;
+--cl-mystic: #e5e9eb;
+--ls-secondary-border-color: #e2e2e2;
+--cl-bonjour: #e2e2e2;
+
+--ls-guideline-color: rgba(46, 27, 5, 0.08);
+
+--ls-menu-hover-color: var(--ls-a-chosen-bg);
+
+--ls-primary-text-color: #121417;
+--ls-link-text-hover-color: #121417;
 --ls-link-ref-text-hover-color: #121417;
---ls-tag-text-color: var(--ls-link-ref-text-color);
---ls-tag-text-hover-color: var(--ls-link-ref-text-hover-color);
+--cl-bunker: #121417;
+--ls-secondary-text-color: #94979b;
+--cl-aluminium: #94979b;
+--ls-dark-background-primary-text-color: #8a9198;
+--cl-regentgray: #8a9198;
+
+--ls-title-text-color: var(--ls-primary-text-color);
+
+--ls-tag-text-color: #66b591;
+--ls-tag-text-hover-color: #1d7b58;
 --ls-slide-background-color: #fff;
---ls-block-bullet-border-color: #dedede;
---ls-block-bullet-color: rgba(67, 63, 56, 0.25);
+--ls-block-bullet-border-color: var(--ls-secondary-background-color);
+--ls-block-bullet-color: var(--ls-quaternary-background-color);
 --ls-block-highlight-color: #c0e6fd;
 --ls-selection-background-color: #e4f2ff;
 --ls-page-checkbox-color: #0062c1;
@@ -62,7 +84,7 @@
 --ls-a-chosen-bg: #f7f7f7;
 --ls-right-sidebar-code-bg-color: #2c3238;
 --color-level-1: var(--ls-secondary-background-color);
---color-level-2: var(--ls-tertiary-background-color);
+--color-level-2: var(--ls-primary-background-color);
 --color-level-3: var(--ls-quaternary-background-color);
 --color-level-4: #d0e6fa;
 }
@@ -78,7 +100,20 @@
   font-size: .825em;
 }
 
-/** Content **/
+.foldable-title {
+  color: var(--ls-secondary-text-color);
+}
+
+.foldable-title,
+.foldable-title .font-bold {
+  font-weight: 500;
+}
+
+.foldable-title .opacity-50 {
+  opacity: 1;
+}
+
+/** ---------- CONTENT ---------- **/
 
 .block-content h2,
 .block-content h3,
@@ -94,7 +129,58 @@
   border-bottom-color: var(--ls-border-color);
 }
 
-/** TASKS **/
+/** BLOCK REFERENCES **/
+
+.block-ref,
+.block-ref mark {
+  border: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
+}
+
+.block-ref mark {
+  text-decoration-color: #ffd400;
+}
+
+.block-ref {
+  text-decoration-color: var(--ls-block-bullet-color);
+}
+
+.block-ref a {
+  border: none;
+}
+
+/** ---------- PROPERTIES BLOCK ---------- **/
+
+.block-properties {
+  border-radius: 4px;
+  color: var(--ls-secondary-text-color);
+  position: relative;
+  top: -8px;
+}
+
+/** Things-like tags
+.block-properties .page-ref {
+  font-size: .825em;
+  border-radius: 12px;
+  padding: 2px 6px;
+  border: none;
+  margin-bottom: 2px;
+} **/
+
+.block-properties .page-ref {
+  color: var(--ls-secondary-text-color);
+  border-bottom: 2px dotted var(--ls-block-bullet-color);
+}
+
+.page-property-key {
+  text-transform: capitalize;
+  color: var(--ls-primary-text-color);
+}
+
+/** ---------- TASKS ---------- **/
 
 
 .inline {
@@ -200,21 +286,48 @@ content: "\edef";
 color: #4cbd5e;
 }
 
+/** ---------- LINKS ---------- **/
+
 .page-ref {
-  border-bottom: 2px solid #d4eafe;
+  border-bottom: 1px solid var(--ls-link-text-color);
 }
 
-.page-ref:hover {
+.external-link {
+  border: none;
+}
+
+.page-ref:hover,
+.block-parents a:hover,
+.page-reference:hover,
+.exteral-link {
   color: var(--ls-primary-text-color);
   border-bottom-color: var(--ls-primary-text-color);
   background: none;
 }
 
+/** BLACK LINKS
+.page-ref {
+  color: var(--ls-primary-text-color);
+  border-bottom: 2px solid var(--ls-primary-text-color)
+}
+
+.page-ref:hover,
+.block-parents a:hover,
 .page-reference:hover {
+  color: var(--ls-link-text-color);
+  border-color: #d4eafe;
   background: none;
 }
 
-/** Dropdowns **/
+**/
+
+/** ---------- BULLETS ---------- **/
+
+.bullet-container.bullet-closed {
+  border: 1px solid var(--ls-border-color);
+}
+
+/** ---------- DROPDOWNS ---------- **/
 
 .dropdown-wrapper,
 .menu-link,
@@ -245,7 +358,63 @@ color: #4cbd5e;
   /* background: #509cff; // true Things 3 hover color */
 }
 
+/** TYPOGRAPHY **/
+
+.block-parents a {
+
+  color: var(--ls-secondary-text-color);
+  border-bottom: 2px solid var(--ls-border-color);
+}
+
+mark {
+  background-color: #fff0cc;
+  color: var(--ls-primary-text-color);
+}
+
+b {
+  font-weight: 600;
+}
+
+a.tag {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+mark .page-ref {
+  color: var(--ls-primary-text-color);
+  border-color: var(--ls-primary-text-color);
+}
+
+/** LEFT SIDEBAR **/
 
 .left-sidebar-inner {
   box-shadow: inset -1px 0px 0px 0px rgba(238, 240, 244, 1.00);
+}
+
+/** RIGHT SIDEBAR **/
+
+.cp__right-sidebar,
+.cp__right-sidebar-topbar,
+.cp__right-sidebar .sidebar-item {
+  background-color: var(--ls-secondary-background-color);
+  box-shadow: none;
+}
+
+.cp__right-sidebar .block-properties {
+
+  background-color: #fff;
+
+}
+
+.cp__right-sidebar .color-level .color-level,
+.cp__right-sidebar .block-properties {
+  box-shadow: 0px 1px 1px 0px rgba(0,0,0,.10);
+}
+
+.cp__right-sidebar .sidebar-item .bullet-container.bullet-closed {
+  background: #fff;
+}
+
+.cp__right-sidebar .sidebar-item .block-ref a:hover {
+  background: none;
 }
